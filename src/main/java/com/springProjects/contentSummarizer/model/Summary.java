@@ -17,7 +17,7 @@ public class Summary {
     @Column(length = 5000)
     private String summaryText;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -43,11 +43,11 @@ public class Summary {
         this.summaryText = summaryText;
     }
 
-    public LocalDateTime getCreateAt() {
-        return createAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(LocalDateTime createAt) {
+        this.createdAt = createAt;
     }
 }
