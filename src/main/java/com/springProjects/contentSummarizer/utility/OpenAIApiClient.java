@@ -1,12 +1,21 @@
 package com.springProjects.contentSummarizer.utility;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
-@Component
-public class OpenAIApiClient {
+import java.util.Map;
 
-    // TODO - Implement chat completion OpenAI API Call
-    public String getChatCompletion(String prompt) {
-        return "";
-    }
+@FeignClient(name = "openAIApiClient", url = "${OpenAI.api.url}")
+public interface OpenAIApiClient {
+
+    @PostMapping("/v1/chat/completions")
+    ResponseEntity<String> getChatCompletion(
+            @RequestHeader("Authorization") String authorization,
+            @RequestBody Map<String, Object> requestBody
+    );
 }
